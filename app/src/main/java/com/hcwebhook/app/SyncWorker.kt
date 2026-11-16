@@ -9,6 +9,8 @@ import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.IOException
 
@@ -21,12 +23,28 @@ class SyncWorker(
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {
+            // Nutricional Webhook: um envio por vez, para o automático de hora em hora e o
+            // pedido pela tela não mandarem os mesmos dados em dobro.
+            syncLock.withLock {
             val syncType = inputData.getString(KEY_SYNC_TYPE) ?: "auto"
-            val syncResult = syncManager.performSync(syncType = syncType)
+            // Nutricional Webhook: o "Reenviar" pede um período em dias. Enquanto o histórico
+            // inicial não tiver chegado ao Nutricional, todo envio (também o automático de hora
+            // em hora) leva os últimos dias; depois disso é o incremental de sempre.
+            val requestedDays = inputData.getInt(KEY_RANGE_DAYS, 0)
+            val days = when {
+                requestedDays > 0 -> requestedDays
+                !com.hcwebhook.app.nutricional.NutricionalSetup.isHistorySent(applicationContext) ->
+                    com.hcwebhook.app.nutricional.NutricionalSetup.HISTORY_DAYS
+                else -> 0
+            }
+            val syncResult = syncManager.performSync(timeRangeDays = days.takeIf { it > 0 }, syncType = syncType)
+
             if (syncResult.isSuccess) {
+                if (days > 0) com.hcwebhook.app.nutricional.NutricionalSetup.markHistorySent(applicationContext)
                 Result.success()
             } else {
                 mapFailure(syncResult.exceptionOrNull())
+            }
             }
         } catch (e: CancellationException) {
             throw e
@@ -64,6 +82,8 @@ class SyncWorker(
 
     companion object {
         const val KEY_SYNC_TYPE = "sync_type"
+        const val KEY_RANGE_DAYS = "range_days"
         private const val FOREGROUND_ID = 2002
+        private val syncLock = Mutex()
     }
 }

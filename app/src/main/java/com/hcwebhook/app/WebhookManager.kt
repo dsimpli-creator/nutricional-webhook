@@ -86,6 +86,7 @@ class WebhookManager(
             val requestBuilder = Request.Builder()
                 .url(config.url)
                 .post(requestBody)
+                .header("User-Agent", "NutricionalWebhook/${BuildConfig.VERSION_NAME}")
 
             config.headers.forEach { (key, value) ->
                 requestBuilder.addHeader(key, value)
@@ -153,6 +154,8 @@ class WebhookManager(
         var safe = this
         // Redact common auth query params
         safe = safe.replace(Regex("([?&](token|key|apikey|auth|api_key|secret)=)[^&]+", RegexOption.IGNORE_CASE), "$1********")
+        // Nutricional: o link pessoal de envio leva o segredo no caminho
+        safe = safe.replace(Regex("(/api/health/)[A-Za-z0-9]+"), "$1********")
         // Redact Discord webhook tokens
         safe = safe.replace(Regex("(discord\\.com/api/webhooks/\\d+/)[^/?&]+"), "$1********")
         // Redact Telegram bot tokens (just in case they leak into url somehow)

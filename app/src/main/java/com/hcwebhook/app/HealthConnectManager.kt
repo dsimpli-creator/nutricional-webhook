@@ -2359,6 +2359,14 @@ class HealthConnectManager(private val context: Context) {
         else -> "unknown"
     }
 
+    /** Nutricional Webhook: se este aparelho deixa ler a Conexão Saúde com o app fechado. */
+    fun isBackgroundReadAvailable(): Boolean = try {
+        healthConnectClient.features.getFeatureStatus(HealthConnectFeatures.FEATURE_READ_HEALTH_DATA_IN_BACKGROUND) ==
+            HealthConnectFeatures.FEATURE_STATUS_AVAILABLE
+    } catch (e: Exception) {
+        false
+    }
+
     private fun isMindfulnessAvailable(): Boolean =
         healthConnectClient.features.getFeatureStatus(HealthConnectFeatures.FEATURE_MINDFULNESS_SESSION) ==
             HealthConnectFeatures.FEATURE_STATUS_AVAILABLE

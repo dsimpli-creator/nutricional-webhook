@@ -1,7 +1,6 @@
 package com.hcwebhook.app
 
 import android.app.Application
-import com.feedbackjar.sdk.FeedbackJar
 import androidx.work.BackoffPolicy
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
@@ -14,7 +13,8 @@ class HCWebhookApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        FeedbackJar.init(this, FEEDBACKJAR_WIDGET_ID)
+        // Nutricional Webhook: sem o serviço de opinião (FeedbackJar) do HC Webhook; o app
+        // só fala com o Nutricional.
         preferencesManager = PreferencesManager(this)
         preferencesManager.initTimestampStyle()
         preferencesManager.initBucketDedup()
@@ -44,6 +44,11 @@ class HCWebhookApplication : Application() {
     fun scheduleSyncWork() {
         // Only schedule if sync mode is INTERVAL
         if (preferencesManager.getSyncMode() != SyncMode.INTERVAL) {
+            return
+        }
+        // Nutricional Webhook: sem conexão com o Nutricional não há o que enviar.
+        if (com.hcwebhook.app.nutricional.NutricionalSetup.currentUrl(this) == null) {
+            cancelSyncWork()
             return
         }
 

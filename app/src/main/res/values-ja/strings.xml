@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HC Webhook</string>
+    <string name="app_name">Nutricional Webhook</string>
     <string name="onboarding_skip_dialog_title">イントロダクションをスキップしますか？</string>
     <string name="onboarding_skip_dialog_text">「設定」画面からいつでも再度表示できます。</string>
     <string name="onboarding_skip">スキップ</string>
@@ -235,7 +235,7 @@
     <string name="about_app_version">バージョン %1$s (%2$d)</string>
     <string name="about_app_desc">Health Connect データを Webhook にシームレスに接続し、カスタム エンドポイントへの健康データの自動同期を可能にする Android アプリケーション。</string>
     <string name="about_privacy_title">プライバシーとセキュリティ</string>
-    <string name="about_privacy_desc">• HC Webhook は個人データを収集、保存、またはサードパーティのサービスに送信しません。
+    <string name="about_privacy_desc">• Nutricional Webhook は個人データを収集、保存、またはサードパーティのサービスに送信しません。
 • すべての健康データは、設定された Webhook に送信されるまでデバイス上に残ります。
 • Webhook URL はデバイス上にローカルに保存されます
 • どのデータタイプを同期し、どこに送信するかを完全に制御できます。</string>
@@ -272,7 +272,7 @@
     <string name="feedback_history_title">送信履歴</string>
     <string name="feedback_view_all">すべての機能リクエストを見る</string>
     <string name="feedback_weekly_title">フィードバックをお願いします</string>
-    <string name="feedback_weekly_desc">HC Webhook を1週間お使いです。不具合、不足している点、同期を良くする方法を教えてください。約1分で送れます。</string>
+    <string name="feedback_weekly_desc">Nutricional Webhook を1週間お使いです。不具合、不足している点、同期を良くする方法を教えてください。約1分で送れます。</string>
     <string name="feedback_weekly_cta">今すぐフィードバックを送る</string>
     <string name="feedback_weekly_dismiss">閉じる</string>
     <string name="feedback_weekly_dismiss_hint">フィードバックはいつでも「設定」→「フィードバックを提供する」から送れます。</string>
@@ -392,7 +392,7 @@
     <string name="battery_banner_action_oem">%1$s</string>
     <string name="battery_banner_action_dismiss">閉じる</string>
     <string name="battery_banner_dialog_title">バッテリー最適化を無効にする</string>
-    <string name="battery_banner_dialog_desc">システムダイアログで「許可」をタップして、HC Webhookが制限なしでバックグラウンドで実行できるようにしてください。</string>
+    <string name="battery_banner_dialog_desc">システムダイアログで「許可」をタップして、Nutricional Webhookが制限なしでバックグラウンドで実行できるようにしてください。</string>
 
     <!-- Exact Alarm Warning -->
     <string name="exact_alarm_warning">正確なアラームが許可されていません — スケジュールの時刻がずれる場合があります。設定で有効にするにはタップしてください。</string>
@@ -466,9 +466,9 @@
     <string name="app_lock_title">アプリのロック</string>
     <string name="app_lock_desc">アプリを開くときに指紋、顔、または画面ロックを求めます。</string>
     <string name="app_lock_no_credential">先にこの端末で画面ロックを設定してください。</string>
-    <string name="app_lock_locked_title">HC Webhook はロックされています</string>
+    <string name="app_lock_locked_title">Nutricional Webhook はロックされています</string>
     <string name="app_lock_unlock">ロック解除</string>
-    <string name="app_lock_prompt_title">HC Webhook のロックを解除</string>
+    <string name="app_lock_prompt_title">Nutricional Webhook のロックを解除</string>
     <string name="app_lock_confirm">確認してアプリのロックをオンにします</string>
     <string name="trigger_tile_label">健康データを同期</string>
     <string name="trigger_sync_started">同期を開始しました</string>

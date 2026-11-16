@@ -1,98 +1,86 @@
-# Health Connect to Webhook
+# Nutricional Webhook
 
-An Android app that forwards health data from Google Fit, Samsung Health, Fitbit,
-and other apps to your webhooks or local tools via Health Connect.
+App Android que envia os dados de saúde do celular para a conta da pessoa no
+[Nutricional](https://nutri.virachef.com.br), sozinho, de hora em hora. Ele lê a **Conexão Saúde**
+(Health Connect), onde o Samsung Health, o Google Fit, o Fitbit e outros apps guardam os dados.
 
-<table role="presentation" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td valign="middle"><a href="https://play.google.com/store/apps/details?id=com.hcwebhook.app"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="90"></a></td>
-    <td valign="middle">&nbsp;&nbsp;</td>
-    <td valign="middle"><a href="https://apps.apple.com/app/health-webhook/id6763619597"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" height="60"></a></td>
-  </tr>
-</table>
+É uma adaptação do **[HC Webhook](https://github.com/mcnaveen/health-connect-webhook)**, de
+MC.Naveen, com tudo já decidido para o Nutricional: não há endereço para digitar, tipo de dado
+para escolher nem intervalo para configurar.
 
-**Get it from the [Google Play Store](https://play.google.com/store/apps/details?id=com.hcwebhook.app) or the [App Store](https://apps.apple.com/app/health-webhook/id6763619597).**
+## Como funciona
 
-![HC Webhook](image.png)
+1. No Nutricional, em **⚙ Perfil e metas → Envio automático de saúde**, a pessoa toca em
+   **Conectar este celular**. O app abre com o link pessoal dela e pede a confirmação.
+2. O Android mostra uma tela só para liberar os dados (**Permitir tudo**).
+3. O app envia os últimos 30 dias e, a partir daí, o que mudou a cada hora, mesmo fechado.
 
-## How it works
+A tela inicial mostra se está tudo certo, tem um botão **Enviar agora** e avisa do que falta
+(permissão, economia de bateria, versão nova), sempre com o botão que resolve.
 
-1. Your health apps sync to **Health Connect**, which aggregates them into one API.
-2. **HC Webhook** reads that data on an interval, on a schedule, or on demand.
-3. It `POST`s the data to your webhook URLs (JSON or Protobuf/gRPC) and can serve
-   realtime JSON over your local network.
-4. Your services, agents, or automation tools receive it.
+## Instalar
 
-## Screenshots
+Baixe o APK pelo Nutricional (mesma tela do passo 1) ou em
+[Releases](https://github.com/dsimpli-creator/nutricional-webhook/releases). O app não está na
+Play Store: o Android pede para permitir a instalação pelo navegador.
 
-| Home | Data Types | Webhook URLs | Logs |
-| :--: | :--: | :--: | :--: |
-| <img src="screenshots/1.png" width="200" alt="Home"> | <img src="screenshots/2.png" width="200" alt="Data Types"> | <img src="screenshots/3.png" width="200" alt="Webhook URLs"> | <img src="screenshots/4.png" width="200" alt="Logs"> |
+Requisitos: Android 8 ou mais novo, com a Conexão Saúde (no Android 14 em diante ela já vem no
+sistema).
 
-## Features
+Este app só fala com `nutri.virachef.com.br`. Para usar com outro servidor, troque o endereço em
+`app/src/main/java/com/hcwebhook/app/nutricional/NutricionalLink.kt` e compile a sua versão.
 
-Interval or scheduled sync · 31 health data types · multiple webhooks · JSON or
-Protobuf/gRPC delivery · local HTTP server · webhook logs · settings
-backup/restore · 10 languages. Full list, supported apps, and data types:
-**[docs/features.md](docs/features.md)**.
+## Modificações em relação ao HC Webhook
 
-## Install
+Este repositório parte do HC Webhook **v1.9.32** (commit `88fa8b0`). Modificado em **16/11/2026**:
 
-### Stable (recommended)
+- **Identidade**: nome Nutricional Webhook, pacote `br.com.virachef.nutricional.webhook`, ícone e
+  cores do Nutricional. O código continua no pacote Kotlin `com.hcwebhook.app`.
+- **Uma tela só**, em português (`nutricional/NutricionalApp.kt`), no lugar das telas de início,
+  dados, webhooks, agendamento, servidor local, notificações e ajustes.
+- **Conexão por um toque**: o site abre o app por `nutricional://conectar?u=…`. O link só é
+  aceito se for o endereço pessoal do Nutricional (`nutricional/NutricionalLink.kt`) e depois de
+  confirmado na tela. Também dá para colar o link copiado.
+- **Configuração automática** (`nutricional/NutricionalSetup.kt`): um destino só, todos os tipos de
+  dado que o Nutricional lê, envio a cada 60 minutos, histórico de 30 dias no primeiro envio.
+- **Dados de ciclo menstrual e de vida íntima não são pedidos**: saíram do manifesto e da lista
+  de tipos.
+- **Envio mais tolerante**: tipos sem permissão são pulados em vez de derrubar o envio inteiro;
+  um envio por vez; o histórico é reenviado até chegar uma vez.
+- **Só fala com o Nutricional**: sem o serviço de opinião (FeedbackJar) e sem destinos em HTTP
+  simples. Saíram do manifesto os widgets, o bloco de Configurações rápidas e o receptor de
+  automação (Tasker/adb).
+- **Aviso de versão nova**: o app pergunta ao Nutricional qual é a versão publicada
+  (`nutricional/UpdateChecker.kt`) e oferece o download.
+- **Repositório**: saíram os fluxos de publicação, a ficha de loja, os modelos de issue e as
+  capturas de tela do projeto original; entrou `.github/workflows/build.yml`.
 
-Store builds — tested releases, long-term support:
+O histórico do git mostra cada mudança linha a linha. As pastas `docs/` e `server/` são do
+projeto original e descrevem o formato dos dados enviados, que não mudou.
 
-<table role="presentation" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td valign="middle"><a href="https://play.google.com/store/apps/details?id=com.hcwebhook.app"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="90"></a></td>
-    <td valign="middle">&nbsp;&nbsp;</td>
-    <td valign="middle"><a href="https://apps.apple.com/app/health-webhook/id6763619597"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" height="60"></a></td>
-  </tr>
-</table>
+## Compilar
 
-### Beta (rolling release)
+```bash
+./gradlew :app:testFossDebugUnitTest   # testes
+./gradlew :app:assembleFossDebug       # APK de teste (instala ao lado do app normal)
+```
 
-Android APKs straight from GitHub Releases via
-[Obtainium](https://github.com/ImranR98/Obtainium) — newest features first, more
-churn. Add app URL: `https://github.com/mcnaveen/health-connect-webhook`.
+O APK publicado é gerado pelo GitHub Actions (`.github/workflows/build.yml`) a cada tag `vX.Y.Z`,
+assinado com uma chave que fica só nos segredos do repositório. A versão fica em
+`app/build.gradle.kts`.
 
-## Requirements
+## Privacidade
 
-- Android 8.0 (API 26) or higher
-- Google Health Connect installed and set up
-- Internet connection for webhook delivery
+Os dados vão somente para a conta da pessoa no Nutricional, por HTTPS. Sem anúncios nem
+rastreadores. Detalhes em [PRIVACY_POLICY.md](PRIVACY_POLICY.md).
 
-## Documentation
+## Licença
 
-| Doc | Covers |
-| --- | --- |
-| [docs/features.md](docs/features.md) | Full feature list, supported apps, languages, data types |
-| [docs/usage.md](docs/usage.md) | Setup, sync modes, local server, feedback, limitations |
-| [docs/api-reference.md](docs/api-reference.md) | Payload schema, webhook / gRPC delivery, local HTTP server |
-| [docs/webhook.md](docs/webhook.md) | Full field tables, units, examples |
-| [docs/local-http.md](docs/local-http.md) | Local HTTP `GET` API |
-| [docs/building.md](docs/building.md) | Build, project structure, architecture, contributing |
+[AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html), a mesma do projeto original: veja
+[LICENSE](LICENSE) e o adendo do autor original em [LICENSE.ADDENDUM](LICENSE.ADDENDUM), que
+continuam valendo para esta adaptação. Por causa do adendo, este app **não é distribuído pela
+Play Store nem pela App Store**.
 
-## Privacy
-
-Health data stays on your device until sent to your configured webhooks. Nothing
-goes to third parties. You control which data types sync and where. Revoke
-permissions any time in Android settings.
-
-## License
-
-[AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html) — see [LICENSE](LICENSE).
-Commercial redistribution on the App Store or Google Play requires a separate
-commercial license; see [LICENSE.ADDENDUM](LICENSE.ADDENDUM).
-
-## Support
-
-- [Open an issue](https://github.com/mcnaveen/health-connect-webhook/issues)
-- In-app: **About** → **Provide Feedback**
-- Feature board: [hc-webhook.feedbackjar.com](https://hc-webhook.feedbackjar.com/)
-
-## Acknowledgments
-
-Built with [Health Connect](https://developer.android.com/guide/health-and-fitness/health-connect),
-[Jetpack Compose](https://developer.android.com/jetpack/compose), and
-[WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager).
+HC Webhook © 2026 MC.Naveen. As modificações do Nutricional Webhook são publicadas sob a mesma
+licença. Este projeto não tem vínculo com o autor original nem é endossado por ele. Se o app for
+útil para você, considere apoiar o [projeto original](https://github.com/mcnaveen/health-connect-webhook).

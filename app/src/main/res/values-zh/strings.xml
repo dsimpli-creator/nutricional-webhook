@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HC Webhook</string>
+    <string name="app_name">Nutricional Webhook</string>
     <string name="onboarding_skip_dialog_title">跳过介绍？</string>
     <string name="onboarding_skip_dialog_text">您可以随时在“设置”页面再次查看。</string>
     <string name="onboarding_skip">跳过</string>
@@ -235,7 +235,7 @@
     <string name="about_app_version">版本 %1$s (%2$d)</string>
     <string name="about_app_desc">一款 Android 应用程序，可将 Health Connect 数据无缝连接到您的 Webhooks，从而实现将健康数据自动同步到您的自定义端点。</string>
     <string name="about_privacy_title">隐私与安全</string>
-    <string name="about_privacy_desc">• HC Webhook 不会收集、存储任何个人数据或将任何个人数据传输给第三方服务
+    <string name="about_privacy_desc">• Nutricional Webhook 不会收集、存储任何个人数据或将任何个人数据传输给第三方服务
 • 所有健康数据都会保留在您的设备上，直到发送到您配置的 Webhooks
 • Webhook URL 存储在您的设备本地
 • 您可以完全控制同步哪些数据类型以及将其发送到何处</string>
@@ -272,7 +272,7 @@
     <string name="feedback_history_title">您的提交</string>
     <string name="feedback_view_all">查看所有功能请求</string>
     <string name="feedback_weekly_title">我们需要你的反馈</string>
-    <string name="feedback_weekly_desc">你已使用 HC Webhook 一周。告诉我们哪里出了问题、还缺什么，或怎样能让同步更好。大约只需一分钟。</string>
+    <string name="feedback_weekly_desc">你已使用 Nutricional Webhook 一周。告诉我们哪里出了问题、还缺什么，或怎样能让同步更好。大约只需一分钟。</string>
     <string name="feedback_weekly_cta">立即发送反馈</string>
     <string name="feedback_weekly_dismiss">关闭</string>
     <string name="feedback_weekly_dismiss_hint">你可以随时在设置 → 提供反馈中发送反馈。</string>
@@ -392,7 +392,7 @@
     <string name="battery_banner_action_oem">%1$s</string>
     <string name="battery_banner_action_dismiss">关闭</string>
     <string name="battery_banner_dialog_title">禁用电池优化</string>
-    <string name="battery_banner_dialog_desc">在系统对话框中点击“允许”，允许 HC Webhook 在后台无限制运行。</string>
+    <string name="battery_banner_dialog_desc">在系统对话框中点击“允许”，允许 Nutricional Webhook 在后台无限制运行。</string>
 
     <!-- Exact Alarm Warning -->
     <string name="exact_alarm_warning">精确闹钟不被允许 — 定时时间可能会偏差。点击在设置中启用。</string>
@@ -466,9 +466,9 @@
     <string name="app_lock_title">应用锁</string>
     <string name="app_lock_desc">打开应用时要求指纹、面部或屏幕锁。</string>
     <string name="app_lock_no_credential">请先在此设备上设置屏幕锁。</string>
-    <string name="app_lock_locked_title">HC Webhook 已锁定</string>
+    <string name="app_lock_locked_title">Nutricional Webhook 已锁定</string>
     <string name="app_lock_unlock">解锁</string>
-    <string name="app_lock_prompt_title">解锁 HC Webhook</string>
+    <string name="app_lock_prompt_title">解锁 Nutricional Webhook</string>
     <string name="app_lock_confirm">确认以开启应用锁</string>
     <string name="trigger_tile_label">同步健康数据</string>
     <string name="trigger_sync_started">已开始同步</string>

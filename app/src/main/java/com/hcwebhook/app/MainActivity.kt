@@ -14,6 +14,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.health.connect.client.HealthConnectClient
 import androidx.lifecycle.lifecycleScope
 import com.hcwebhook.app.BuildConfig
+import com.hcwebhook.app.nutricional.NutricionalApp
+import com.hcwebhook.app.nutricional.NutricionalState
 import com.hcwebhook.app.screens.AboutScreen
 import com.hcwebhook.app.screens.ChangelogScreen
 import com.hcwebhook.app.screens.ConfigurationScreen
@@ -75,6 +77,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         preferencesManager = PreferencesManager(this)
         initializePermissionLauncher()
+        // Nutricional Webhook: link do botão "Conectar" do site. Só na criação de verdade, para
+        // uma rotação de tela não pedir a confirmação outra vez.
+        if (savedInstanceState == null) NutricionalState.offer(intent)
         if (intent?.getBooleanExtra(LocalHttpServerService.EXTRA_OPEN_LOCAL_HTTP, false) == true) {
             openLocalHttpRequest.value = true
         }
@@ -90,20 +95,12 @@ class MainActivity : AppCompatActivity() {
                     })
                     return@HCWebhookTheme
                 }
-                var showOnboarding by remember { mutableStateOf(!preferencesManager.hasSeenOnboarding()) }
-                if (showOnboarding) {
-                    OnboardingScreen(onFinish = {
-                        preferencesManager.setHasSeenOnboarding()
-                        showOnboarding = false
-                    })
-                } else {
-                    MainScreenWithNav(
-                        activity = this@MainActivity,
-                        preferencesManager = preferencesManager,
-                        permissionLauncher = permissionLauncher,
-                        onRestartOnboarding = { showOnboarding = true }
-                    )
-                }
+                // Nutricional Webhook: uma tela só (conectar, estado e envio) no lugar da
+                // apresentação e das abas do HC Webhook, que seguem no código sem uso.
+                NutricionalApp(
+                    activity = this@MainActivity,
+                    permissionLauncher = permissionLauncher
+                )
             }
         }
     }
@@ -134,6 +131,7 @@ class MainActivity : AppCompatActivity() {
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
+        NutricionalState.offer(intent)
         if (intent.getBooleanExtra(LocalHttpServerService.EXTRA_OPEN_LOCAL_HTTP, false)) {
             openLocalHttpRequest.value = true
         }

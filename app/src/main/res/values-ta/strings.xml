@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HC Webhook</string>
+    <string name="app_name">Nutricional Webhook</string>
     <string name="onboarding_skip_dialog_title">அறிமுகத்தைத் தவிர்க்கவா?</string>
     <string name="onboarding_skip_dialog_text">நீங்கள் எப்போது வேண்டுமானாலும் அமைப்புகள் திரையிலிருந்து மீண்டும் பார்க்க முடியும்.</string>
     <string name="onboarding_skip">தவிர்</string>
@@ -235,7 +235,7 @@
     <string name="about_app_version">பதிப்பு %1$s (%2$d)</string>
     <string name="about_app_desc">உங்கள் வெப்ஹூக்குகளுடன் ஹெல்த் கனெக்ட் தரவை தடையின்றி இணைக்கும் ஒரு Android பயன்பாடு, உங்கள் தனிப்பயன் இறுதிப்புள்ளிகளுக்கு தானியங்கு சுகாதாரத் தரவு ஒத்திசைவைச் செயல்படுத்துகிறது.</string>
     <string name="about_privacy_title">தனியுரிமை &amp; பாதுகாப்பு</string>
-    <string name="about_privacy_desc">• HC Webhook எந்தவொரு தனிப்பட்ட தரவையும் சேகரிக்கவோ, சேமிக்கவோ அல்லது மூன்றாம் தரப்பு சேவைகளுக்கு அனுப்பவோ இல்லை
+    <string name="about_privacy_desc">• Nutricional Webhook எந்தவொரு தனிப்பட்ட தரவையும் சேகரிக்கவோ, சேமிக்கவோ அல்லது மூன்றாம் தரப்பு சேவைகளுக்கு அனுப்பவோ இல்லை
 • உங்கள் உள்ளமைக்கப்பட்ட வெப்ஹூக்குகளுக்கு அனுப்பப்படும் வரை அனைத்து சுகாதாரத் தரவும் உங்கள் சாதனத்தில் இருக்கும்
 • Webhook URLகள் உங்கள் சாதனத்தில் உள்ளூரில் சேமிக்கப்படும்
 • எந்த தரவு வகைகள் ஒத்திசைக்கப்படுகின்றன மற்றும் அவை எங்கு அனுப்பப்படுகின்றன என்பதில் உங்களுக்கு முழுக் கட்டுப்பாடு உள்ளது</string>
@@ -272,7 +272,7 @@
     <string name="feedback_history_title">உங்கள் சமர்ப்பிப்புகள்</string>
     <string name="feedback_view_all">அனைத்து அம்சக் கோரிக்கைகளையும் பார்க்கவும்</string>
     <string name="feedback_weekly_title">உங்கள் கருத்து தேவை</string>
-    <string name="feedback_weekly_desc">நீங்கள் HC Webhook-ஐ ஒரு வாரம் பயன்படுத்துகிறீர்கள். என்ன உடைந்தது, என்ன இல்லை, அல்லது ஒத்திசைவை எது மேம்படுத்தும் என்பதைச் சொல்லுங்கள். சுமார் ஒரு நிமிடம் ஆகும்.</string>
+    <string name="feedback_weekly_desc">நீங்கள் Nutricional Webhook-ஐ ஒரு வாரம் பயன்படுத்துகிறீர்கள். என்ன உடைந்தது, என்ன இல்லை, அல்லது ஒத்திசைவை எது மேம்படுத்தும் என்பதைச் சொல்லுங்கள். சுமார் ஒரு நிமிடம் ஆகும்.</string>
     <string name="feedback_weekly_cta">இப்போது கருத்தை அனுப்பவும்</string>
     <string name="feedback_weekly_dismiss">மூடு</string>
     <string name="feedback_weekly_dismiss_hint">கருத்தை எப்போது வேண்டுமானாலும் அமைப்புகள் → கருத்துக்களை வழங்கவும் என்பதிலிருந்து அனுப்பலாம்.</string>
@@ -392,7 +392,7 @@
     <string name="battery_banner_action_oem">%1$s</string>
     <string name="battery_banner_action_dismiss">தள்ளிவிடு</string>
     <string name="battery_banner_dialog_title">பாட்டரி மேம்பாடுவை முடக்குக</string>
-    <string name="battery_banner_dialog_desc">கொள்கை இல்லாமல் HC Webhook பின்னணியில் இயங்க அனுமதிக்க கணினி உரையாடலில் “அனுமதி” என்பதை தடவுக.</string>
+    <string name="battery_banner_dialog_desc">கொள்கை இல்லாமல் Nutricional Webhook பின்னணியில் இயங்க அனுமதிக்க கணினி உரையாடலில் “அனுமதி” என்பதை தடவுக.</string>
 
     <!-- Exact Alarm Warning -->
     <string name="exact_alarm_warning">சரியான எச்சரிக்கைகள் அனுமதிக்கப்படவில்லை — திட்டமிட்ட நேரங்கள் மாறலாம். அமைப்புகளில் இயக்க தடவுக.</string>
@@ -466,9 +466,9 @@
     <string name="app_lock_title">ஆப் பூட்டு</string>
     <string name="app_lock_desc">ஆப்பைத் திறக்கும்போது கைரேகை, முகம் அல்லது திரைப் பூட்டைக் கேட்கும்.</string>
     <string name="app_lock_no_credential">முதலில் இந்தச் சாதனத்தில் திரைப் பூட்டை அமைக்கவும்.</string>
-    <string name="app_lock_locked_title">HC Webhook பூட்டப்பட்டுள்ளது</string>
+    <string name="app_lock_locked_title">Nutricional Webhook பூட்டப்பட்டுள்ளது</string>
     <string name="app_lock_unlock">திற</string>
-    <string name="app_lock_prompt_title">HC Webhook ஐத் திற</string>
+    <string name="app_lock_prompt_title">Nutricional Webhook ஐத் திற</string>
     <string name="app_lock_confirm">ஆப் பூட்டை இயக்க உறுதிசெய்யவும்</string>
     <string name="trigger_tile_label">உடல்நல தரவை ஒத்திசை</string>
     <string name="trigger_sync_started">ஒத்திசைவு தொடங்கியது</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HC Webhook</string>
+    <string name="app_name">Nutricional Webhook</string>
     <string name="onboarding_skip_dialog_title">Passer l’introduction ?</string>
     <string name="onboarding_skip_dialog_text">Vous pouvez la revoir à tout moment depuis l’écran Paramètres.</string>
     <string name="onboarding_skip">Passer</string>
@@ -235,7 +235,7 @@
     <string name="about_app_version">Version %1$s (%2$d)</string>
     <string name="about_app_desc">Une application Android qui connecte de manière transparente les données Health Connect à vos webhooks, permettant ainsi la synchronisation automatisée des données de santé avec vos points de terminaison personnalisés.</string>
     <string name="about_privacy_title">Confidentialité et sécurité</string>
-    <string name="about_privacy_desc">• HC Webhook ne collecte, ne stocke ni ne transmet aucune donnée personnelle à des services tiers.
+    <string name="about_privacy_desc">• Nutricional Webhook ne collecte, ne stocke ni ne transmet aucune donnée personnelle à des services tiers.
 • Toutes les données de santé restent sur votre appareil jusqu\'à ce qu\'elles soient envoyées à vos webhooks configurés.
 • Les URL des webhooks sont stockées localement sur votre appareil.
 • Vous avez un contrôle total sur les types de données qui sont synchronisés et où ils sont envoyés.</string>
@@ -272,7 +272,7 @@
     <string name="feedback_history_title">Vos soumissions</string>
     <string name="feedback_view_all">Voir toutes les demandes de fonctionnalités</string>
     <string name="feedback_weekly_title">Nous avons besoin de vos commentaires</string>
-    <string name="feedback_weekly_desc">Vous utilisez HC Webhook depuis une semaine. Dites-nous ce qui ne fonctionne pas, ce qui manque ou ce qui améliorerait la synchronisation. Cela prend environ une minute.</string>
+    <string name="feedback_weekly_desc">Vous utilisez Nutricional Webhook depuis une semaine. Dites-nous ce qui ne fonctionne pas, ce qui manque ou ce qui améliorerait la synchronisation. Cela prend environ une minute.</string>
     <string name="feedback_weekly_cta">Envoyer un commentaire maintenant</string>
     <string name="feedback_weekly_dismiss">Ignorer</string>
     <string name="feedback_weekly_dismiss_hint">Vous pouvez envoyer un commentaire à tout moment depuis Paramètres → Fournir des commentaires.</string>
@@ -392,7 +392,7 @@
     <string name="battery_banner_action_oem">%1$s</string>
     <string name="battery_banner_action_dismiss">Ignorer</string>
     <string name="battery_banner_dialog_title">Désactiver l’optimisation de la batterie</string>
-    <string name="battery_banner_dialog_desc">Appuyez sur « Autoriser » dans la boîte de dialogue système pour permettre à HC Webhook de s’exécuter en arrière-plan sans restriction.</string>
+    <string name="battery_banner_dialog_desc">Appuyez sur « Autoriser » dans la boîte de dialogue système pour permettre à Nutricional Webhook de s’exécuter en arrière-plan sans restriction.</string>
 
     <!-- Exact Alarm Warning -->
     <string name="exact_alarm_warning">Alarmes exactes non autorisées — les horaires programmés peuvent dériver. Appuyez pour activer dans les paramètres.</string>
@@ -466,9 +466,9 @@
     <string name="app_lock_title">Verrouillage de l\'app</string>
     <string name="app_lock_desc">Demander votre empreinte, votre visage ou le verrouillage de l\'écran à l\'ouverture de l\'app.</string>
     <string name="app_lock_no_credential">Définissez d\'abord un verrouillage de l\'écran sur cet appareil.</string>
-    <string name="app_lock_locked_title">HC Webhook est verrouillée</string>
+    <string name="app_lock_locked_title">Nutricional Webhook est verrouillée</string>
     <string name="app_lock_unlock">Déverrouiller</string>
-    <string name="app_lock_prompt_title">Déverrouiller HC Webhook</string>
+    <string name="app_lock_prompt_title">Déverrouiller Nutricional Webhook</string>
     <string name="app_lock_confirm">Confirmez pour activer le verrouillage de l\'app</string>
     <string name="trigger_tile_label">Synchroniser la santé</string>
     <string name="trigger_sync_started">Synchronisation lancée</string>

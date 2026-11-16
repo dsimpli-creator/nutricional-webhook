@@ -29,11 +29,6 @@
     <uses-permission android:name="android.permission.health.READ_BODY_WATER_MASS" />
     <uses-permission android:name="android.permission.health.READ_VO2_MAX" />
     <uses-permission android:name="android.permission.health.READ_BONE_MASS" />
-    <uses-permission android:name="android.permission.health.READ_MENSTRUATION" />
-    <uses-permission android:name="android.permission.health.READ_INTERMENSTRUAL_BLEEDING" />
-    <uses-permission android:name="android.permission.health.READ_OVULATION_TEST" />
-    <uses-permission android:name="android.permission.health.READ_CERVICAL_MUCUS" />
-    <uses-permission android:name="android.permission.health.READ_SEXUAL_ACTIVITY" />
     <uses-permission android:name="android.permission.health.READ_BASAL_BODY_TEMPERATURE" />
     <uses-permission android:name="android.permission.health.READ_MINDFULNESS" />
     <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND" />
@@ -67,7 +62,7 @@
         android:largeHeap="true"
         android:localeConfig="@xml/locales_config"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:usesCleartextTraffic="true"
+        android:usesCleartextTraffic="false"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -79,18 +74,31 @@
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Botão "Conectar" do site do Nutricional: nutricional://conectar?u=<link pessoal>.
+                 O link só é aceito depois de validado (NutricionalLink) e confirmado na tela. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="conectar"
+                    android:scheme="nutricional" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".LogsActivity"
             android:exported="false"
-            android:label="Webhook Logs" />
+            android:label="Registros de envio" />
 
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
@@ -120,80 +128,14 @@
             android:exported="false"
             android:foregroundServiceType="dataSync" />
 
-        <!-- Scheduled Sync Receiver -->
-        <!-- Tasker / MacroDroid / adb: broadcast com.hcwebhook.app.ACTION_SYNC to this package. -->
-        <receiver
-            android:name=".SyncTriggerReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.hcwebhook.app.ACTION_SYNC" />
-            </intent-filter>
-        </receiver>
-
-        <receiver
-            android:name=".SyncStatusWidget"
-            android:exported="true"
-            android:label="@string/trigger_widget_label">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/sync_status_widget_info" />
-        </receiver>
-
-        <receiver
-            android:name=".SyncNowWidget"
-            android:exported="true"
-            android:label="@string/widget_sync_now_label">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/sync_now_widget_info" />
-        </receiver>
-
-        <receiver
-            android:name=".HeartbeatWidget"
-            android:exported="true"
-            android:label="@string/widget_heartbeat_label">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/heartbeat_widget_info" />
-        </receiver>
-
-        <receiver
-            android:name=".TodayWidget"
-            android:exported="true"
-            android:label="@string/widget_today_label">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/today_widget_info" />
-        </receiver>
+        <!-- Nutricional Webhook: sem widgets, sem bloco de Configurações rápidas e sem o receptor
+             exportado de automação (Tasker/adb) do HC Webhook: o app envia sozinho. -->
 
         <!-- Expedited sync work runs as a foreground service on Android 11 and older. -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
             tools:node="merge" />
-
-        <service
-            android:name=".SyncTileService"
-            android:exported="true"
-            android:icon="@drawable/ic_sync"
-            android:label="@string/trigger_tile_label"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-        </service>
 
         <receiver
             android:name=".ScheduledSyncReceiver"

@@ -6,8 +6,8 @@ plugins {
 }
 
 val appVersionMajor = 1
-val appVersionMinor = 9
-val appVersionPatch = 32
+val appVersionMinor = 0
+val appVersionPatch = 0
 val appVersionCode = (appVersionMajor * 10000) + (appVersionMinor * 100) + appVersionPatch
 val appVersionName = "$appVersionMajor.$appVersionMinor.$appVersionPatch"
 
@@ -16,7 +16,8 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.hcwebhook.app"
+        // Nutricional Webhook: identidade própria; o namespace do código segue o do HC Webhook.
+        applicationId = "br.com.virachef.nutricional.webhook"
         minSdk = 26
         targetSdk = 36
         versionCode = appVersionCode
@@ -24,7 +25,7 @@ android {
         manifestPlaceholders["appLabel"] = "@string/app_name"
 
         androidResources {
-            localeFilters += listOf("en", "ta", "fr", "de", "es", "pt", "zh", "ja", "ko", "it")
+            localeFilters += listOf("en", "pt")
         }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -49,6 +50,7 @@ android {
                 storePassword = System.getenv("KEYSTORE_PASSWORD")
                 keyAlias = System.getenv("KEY_ALIAS")
                 keyPassword = System.getenv("KEY_PASSWORD")
+                storeType = "pkcs12"
             }
         }
     }
@@ -67,7 +69,7 @@ android {
         getByName("debug") {
             applicationIdSuffix = ".debug"
             // Short, so the launcher does not cut it.
-            manifestPlaceholders["appLabel"] = "HC Debug"
+            manifestPlaceholders["appLabel"] = "Nutricional (teste)"
         }
         // Debug-signed, minified build for R8 smoke tests (issue #77).
         // Run: ./gradlew :app:connectedFossMinifyAndroidTest

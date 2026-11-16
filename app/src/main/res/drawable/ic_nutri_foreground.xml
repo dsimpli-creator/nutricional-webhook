@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Os dois anéis do ícone do Nutricional, dentro da área segura do ícone adaptável. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M54,33 a21,21 0 1,1 0,42 a21,21 0 1,1 0,-42"
+        android:strokeAlpha="0.2"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="5" />
+    <path
+        android:pathData="M54,33 A21,21 0 1,1 33.62,59.08"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeLineCap="round"
+        android:strokeWidth="5" />
+    <path
+        android:pathData="M54,42.5 a11.5,11.5 0 1,1 0,23 a11.5,11.5 0 1,1 0,-23"
+        android:strokeAlpha="0.2"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="5" />
+    <path
+        android:pathData="M54,42.5 A11.5,11.5 0 1,1 45.11,61.30"
+        android:strokeColor="#FFF29A4A"
+        android:strokeLineCap="round"
+        android:strokeWidth="5" />
+</vector>

@@ -127,7 +127,18 @@ class SyncManager(private val context: Context) {
             outbox.keepOnly(webhookConfigs.map { it.url })
             val outboxClear = enabledWebhookConfigs.associateWith { drainOutbox(it) }
 
-            val enabledTypes = preferencesManager.getEnabledDataTypes()
+            // Nutricional Webhook: o app liga todos os dados de uma vez, então só lê os que a
+            // pessoa liberou. Sem isto, um único tipo negado derrubava o envio inteiro.
+            val grantedTypes = try {
+                HealthConnectManager.grantedDataTypes(healthConnectManager.getGrantedPermissions()).toSet()
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                null
+            }
+            val enabledTypes = preferencesManager.getEnabledDataTypes().let { all ->
+                if (grantedTypes == null) all else all.intersect(grantedTypes)
+            }
             if (enabledTypes.isEmpty()) {
                 return@withContext Result.failure(Exception("No data types enabled"))
             }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HC Webhook</string>
+    <string name="app_name">Nutricional Webhook</string>
     <string name="onboarding_skip_dialog_title">Pular a introdução?</string>
     <string name="onboarding_skip_dialog_text">Você pode visualizá-la novamente a qualquer momento na tela Configurações.</string>
     <string name="onboarding_skip">Pular</string>
@@ -235,7 +235,7 @@
     <string name="about_app_version">Versão %1$s (%2$d)</string>
     <string name="about_app_desc">Um aplicativo Android que conecta perfeitamente os dados do Health Connect aos seus webhooks, permitindo a sincronização automatizada de dados de saúde aos seus endpoints personalizados.</string>
     <string name="about_privacy_title">Privacidade e segurança</string>
-    <string name="about_privacy_desc">• O HC Webhook não coleta, armazena ou transmite quaisquer dados pessoais para serviços de terceiros
+    <string name="about_privacy_desc">• O Nutricional Webhook não coleta, armazena ou transmite quaisquer dados pessoais para serviços de terceiros
 • Todos os dados de saúde permanecem no seu dispositivo até serem enviados para os webhooks configurados
 • URLs de webhook são armazenados localmente no seu dispositivo
 • Você tem controle total sobre quais tipos de dados são sincronizados e para onde são enviados</string>
@@ -272,7 +272,7 @@
     <string name="feedback_history_title">Seus envios</string>
     <string name="feedback_view_all">Ver todas as solicitações de recursos</string>
     <string name="feedback_weekly_title">Precisamos do seu feedback</string>
-    <string name="feedback_weekly_desc">Você usa o HC Webhook há uma semana. Diga o que quebrou, o que falta ou o que melhoraria a sincronização. Leva cerca de um minuto.</string>
+    <string name="feedback_weekly_desc">Você usa o Nutricional Webhook há uma semana. Diga o que quebrou, o que falta ou o que melhoraria a sincronização. Leva cerca de um minuto.</string>
     <string name="feedback_weekly_cta">Enviar feedback agora</string>
     <string name="feedback_weekly_dismiss">Dispensar</string>
     <string name="feedback_weekly_dismiss_hint">Você pode enviar feedback a qualquer momento em Configurações → Fornecer comentários.</string>
@@ -392,7 +392,7 @@
     <string name="battery_banner_action_oem">%1$s</string>
     <string name="battery_banner_action_dismiss">Dispensar</string>
     <string name="battery_banner_dialog_title">Desativar otimização de bateria</string>
-    <string name="battery_banner_dialog_desc">Toque em "Permitir" na caixa de diálogo do sistema para que o HC Webhook seja executado em segundo plano sem restrições.</string>
+    <string name="battery_banner_dialog_desc">Toque em "Permitir" na caixa de diálogo do sistema para que o Nutricional Webhook seja executado em segundo plano sem restrições.</string>
 
     <!-- Exact Alarm Warning -->
     <string name="exact_alarm_warning">Alarmes exatos não permitidos — os horários agendados podem variar. Toque para ativar nas configurações.</string>
@@ -466,9 +466,9 @@
     <string name="app_lock_title">Bloqueio da app</string>
     <string name="app_lock_desc">Pedir a impressão digital, o rosto ou o bloqueio de ecrã ao abrir a app.</string>
     <string name="app_lock_no_credential">Defina primeiro um bloqueio de ecrã neste dispositivo.</string>
-    <string name="app_lock_locked_title">A HC Webhook está bloqueada</string>
+    <string name="app_lock_locked_title">A Nutricional Webhook está bloqueada</string>
     <string name="app_lock_unlock">Desbloquear</string>
-    <string name="app_lock_prompt_title">Desbloquear a HC Webhook</string>
+    <string name="app_lock_prompt_title">Desbloquear a Nutricional Webhook</string>
     <string name="app_lock_confirm">Confirme para ativar o bloqueio da app</string>
     <string name="trigger_tile_label">Sincronizar saúde</string>
     <string name="trigger_sync_started">Sincronização iniciada</string>
