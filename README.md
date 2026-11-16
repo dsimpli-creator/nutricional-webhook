@@ -24,7 +24,7 @@ Baixe o APK pelo Nutricional (mesma tela do passo 1) ou em
 [Releases](https://github.com/dsimpli-creator/nutricional-webhook/releases). O app não está na
 Play Store: o Android pede para permitir a instalação pelo navegador.
 
-Requisitos: Android 8 ou mais novo, com a Conexão Saúde (no Android 14 em diante ela já vem no
+Requisitos: Android 9 ou mais novo, com a Conexão Saúde (no Android 14 em diante ela já vem no
 sistema).
 
 Este app só fala com `nutri.virachef.com.br`. Para usar com outro servidor, troque o endereço em

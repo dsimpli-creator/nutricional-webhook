@@ -99,4 +99,14 @@ class NutricionalLinkTest {
         )
         bad.forEach { assertNull("deveria recusar: $it", UpdateChecker.parseVersion(it)) }
     }
+
+    @Test
+    fun downloadAddressCarriesOnlyAVersionNumber() {
+        val base = UpdateChecker.DOWNLOAD_URL
+        assertEquals("$base?v=1.2.3", UpdateChecker.downloadUrl("1.2.3"))
+        assertEquals("$base?v=1.2.3", UpdateChecker.downloadUrl(" v1.2.3 "))
+        listOf(null, "", "1.2.3-beta", "1.2.3&x=1", "../outro.apk").forEach {
+            assertEquals("deveria ignorar: $it", base, UpdateChecker.downloadUrl(it))
+        }
+    }
 }

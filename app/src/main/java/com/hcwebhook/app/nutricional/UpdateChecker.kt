@@ -49,6 +49,15 @@ object UpdateChecker {
         }
     }
 
+    /**
+     * Endereço do download. Leva a versão anunciada (`?v=1.2.3`) para que um cache no caminho não
+     * entregue o arquivo da versão anterior logo depois de uma atualização.
+     */
+    fun downloadUrl(version: String?): String {
+        val clean = version?.trim()?.removePrefix("v")
+        return if (clean != null && VERSION.matches(clean)) "$DOWNLOAD_URL?v=$clean" else DOWNLOAD_URL
+    }
+
     /** O campo `version` de `{"version":"1.2.3"}`, só quando tem cara de versão. */
     fun parseVersion(text: String): String? {
         val value = try {

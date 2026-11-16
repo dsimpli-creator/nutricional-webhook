@@ -301,7 +301,7 @@ fun NutricionalApp(
                     onOpenSite = { openUrl(activity, NutricionalLink.SITE + "#conectar-android") },
                     onPaste = { paste() },
                     onAbout = { page = PAGE_ABOUT },
-                    onDownload = { openUrl(activity, UpdateChecker.DOWNLOAD_URL) },
+                    onDownload = { openUrl(activity, UpdateChecker.downloadUrl(update)) },
                 )
 
                 else -> {
@@ -362,7 +362,7 @@ fun NutricionalApp(
                                 title = "Versão $newer disponível",
                                 body = "Baixe e instale por cima desta. A conexão continua valendo.",
                                 action = "Baixar",
-                                onAction = { openUrl(activity, UpdateChecker.DOWNLOAD_URL) },
+                                onAction = { openUrl(activity, UpdateChecker.downloadUrl(newer)) },
                             )
                         }
                         if (health.available && !granted && requests > 0) {
