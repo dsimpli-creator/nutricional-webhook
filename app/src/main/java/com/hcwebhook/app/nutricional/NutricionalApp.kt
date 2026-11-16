@@ -720,8 +720,8 @@ private fun openUrl(activity: Activity, address: String): Boolean =
     tryStart(activity, Intent(Intent.ACTION_VIEW, Uri.parse(address)))
 
 private fun isBatteryRestricted(context: Context): Boolean = try {
-    val power = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-    !power.isIgnoringBatteryOptimizations(context.packageName)
+    val power = context.getSystemService(PowerManager::class.java)
+    power != null && !power.isIgnoringBatteryOptimizations(context.packageName)
 } catch (e: Exception) {
     false
 }
